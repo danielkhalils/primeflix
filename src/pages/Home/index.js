@@ -1,15 +1,19 @@
-import { useEffect, useState, UseState } from "react";
+import { useEffect, useState } from "react"
 import api from "../../services/api";
+import { Link } from "react-router-dom";
+import './home.css';
 
-//http://api.themoviedb.org/3/movie/now_playing?api_key=c3435cfe40aeb079689227d82bf921d3
+//https://api.themoviedb.org/3/movie/now_playing?api_key=fb4ec63f1e40e69b15d5d57853feb7ac
 
 function Home(){
+    
     const [filmes, setFilmes] = useState([]);
+    const [loading, setloading] = useState(true);
 
-    useEffect(() => {
+    useEffect(() =>{
 
         async function loadFilmes(){
-            const response = await api.get("movies/now_playing", {
+            const response = await api.get("movie/now_playing", {
                 params:{
                     api_key: "fb4ec63f1e40e69b15d5d57853feb7ac",
                     language: "pt-BR",
@@ -17,13 +21,23 @@ function Home(){
                 }
             })
 
-            setFilmes(response.data.results.slice(0, 10))
-            //console.log(response.data.results.slice(0,10));
+            //console.log(response.data.results(0,10));
+            setFilmes(response.data.results.slice(0,10));
+            setloading(false)
         }
 
+        //api para pegar filmes
         loadFilmes();
 
     }, [])
+
+    if(loading){
+        return(
+            <div className="loading">
+                <h2>Carregando Filmes...</h2>
+            </div>
+        )
+    }
     
     return(
         <div className="container">
@@ -32,7 +46,8 @@ function Home(){
                     return(
                         <article key={filme.id}>
                             <strong>{filme.title}</strong>
-                            <img src={`http://image.tmdb.org/t/p/original/${filme.poster_path}`} alt={filme.title} />
+                            <img src={`https://image.tmdb.org/t/p/original/${filme.poster_path}`} alt={filme.title} />
+                            <Link to={`/filme/${filme.id}`}>Acessar</Link>
                         </article>
                     )
                 })}

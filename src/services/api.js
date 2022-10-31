@@ -1,10 +1,10 @@
-// Base da Url: http://api.themoviedb.org/3/
-// http://api.themoviedb.org/3/movie/now_playing?api_key=c3435cfe40aeb079689227d82bf921d3
-
 import axios from "axios";
 
+// Base da Url: https://api.themoviedb.org/3/
+// movie/now_playing?api_key=fb4ec63f1e40e69b15d5d57853feb7ac
+
 const api =axios.create({
-    baseURL: 'http://api.themoviedb.org/3/'
+    baseURL: 'https://api.themoviedb.org/3/'
 });
 
 export default api;
