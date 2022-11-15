@@ -17,6 +17,7 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 
 - HTML e CSS
 - JavaScript
+- [ReactJS](https://pt-br.reactjs.org/)
 - [Node e NPM](https://nodejs.org/)
 - [Vercel](primeflix-ejyhxh8rg-danielkhalils.vercel.app)
 
