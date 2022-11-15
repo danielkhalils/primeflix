@@ -1,15 +1,17 @@
-
 .filme-info {
     margin-top: 18ps;
-    display: flex;
     flex-direction: column;
     max-width: 800px;
     padding: 0 8px;
+    display: flex;
+    justify-content: center;
     align-items: center;
+    margin: auto;
 }
 
 .filme-info h1 {
     margin: 14px 0;
+    
 }
 
 .filme-info img {
